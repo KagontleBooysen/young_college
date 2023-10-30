@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "937400269246",
+    "project_id": "mobiledev-17903",
+    "storage_bucket": "mobiledev-17903.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937400269246:android:bae0796f9e2addb2e8a1ef",
+        "android_client_info": {
+          "package_name": "com.example.ycapable_mob"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6kMXdGGm9mPQw42HtaG7hxvHZzAWMD_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:937400269246:android:51a1323d2480a9d0e8a1ef",
+        "android_client_info": {
+          "package_name": "com.example.young_college"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB6kMXdGGm9mPQw42HtaG7hxvHZzAWMD_4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
