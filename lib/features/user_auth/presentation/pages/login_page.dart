@@ -19,7 +19,7 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
-  final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   TextEditingController _emailController = TextEditingController();
   TextEditingController _passwordController = TextEditingController();
 
@@ -180,23 +180,31 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-final FirebaseAuth auth = FirebaseAuth.instance;
-final GoogleSignIn _googleSignIn = GoogleSignIn();
+_signInWithGoogle()async{
 
-Future<void> _signInWithGoogle() async {
-  try {
-    GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
+    final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-    if (googleUser != null) {
-      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-      AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-      await auth.signInWithCredential(credential);
+    try {
+
+      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+
+      if(googleSignInAccount != null ){
+        final GoogleSignInAuthentication googleSignInAuthentication = await
+        googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken,
+        );
+
+        await _firebaseAuth.signInWithCredential(credential);
+        Navigator.pushNamed(context, "/home");
+      }
+
+    }catch(e) {
+showToast(message: "some error occured $e");
     }
-  } catch (e) {
-    print("Error signing in with Google: $e");
+
+
   }
-}
 }
