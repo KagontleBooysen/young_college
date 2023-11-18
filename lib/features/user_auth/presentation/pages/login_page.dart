@@ -95,7 +95,7 @@ class _LoginPageState extends State<LoginPage> {
               SizedBox(height: 10),
               GestureDetector(
                 onTap: () async {
-                  await _signInWithGoogle();
+                  await signInWithGoogle(context);
                 },
                 child: Container(
                   width: double.infinity,
@@ -180,31 +180,48 @@ class _LoginPageState extends State<LoginPage> {
   }
 
 
-_signInWithGoogle()async{
+final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
+final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-    final GoogleSignIn _googleSignIn = GoogleSignIn();
+Future<User?> signInWithGoogle(BuildContext context) async {
+  try {
+    // Show the account selection pop-up
+    GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
 
-    try {
+    if (googleSignInAccount != null) {
+      final GoogleSignInAuthentication googleSignInAuthentication =
+          await googleSignInAccount.authentication;
 
-      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
+      final AuthCredential credential = GoogleAuthProvider.credential(
+        idToken: googleSignInAuthentication.idToken,
+        accessToken: googleSignInAuthentication.accessToken,
+      );
 
-      if(googleSignInAccount != null ){
-        final GoogleSignInAuthentication googleSignInAuthentication = await
-        googleSignInAccount.authentication;
+      final UserCredential authResult = await _firebaseAuth.signInWithCredential(credential);
+      final User? user = authResult.user;
 
-        final AuthCredential credential = GoogleAuthProvider.credential(
-          idToken: googleSignInAuthentication.idToken,
-          accessToken: googleSignInAuthentication.accessToken,
-        );
-
-        await _firebaseAuth.signInWithCredential(credential);
-        Navigator.pushNamed(context, "/home");
+      if (user != null) {
+        // Navigate to the home screen on successful authentication
+        Navigator.pushReplacementNamed(context, "/home");
       }
 
-    }catch(e) {
-showToast(message: "some error occured $e");
+      return user;
+    } else {
+      // Handle case where the user canceled the Google sign-in
+      print("Google sign-in canceled");
+      // You might want to show a message to the user
+      return null;
     }
-
-
+  } catch (e) {
+    // Handle Google sign-in error
+    print("Google sign-in error: $e");
+    // You might want to show an error message to the user
+    return null;
   }
+}
+
+Future<void> signOut() async {
+  await _firebaseAuth.signOut();
+  await _googleSignIn.signOut();
+}
 }

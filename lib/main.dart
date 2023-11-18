@@ -4,7 +4,6 @@ import 'package:young_college/features/app/splash_screen/splash_screen.dart';
 import 'package:young_college/features/user_auth/presentation/pages/home_page.dart';
 import 'package:young_college/features/user_auth/presentation/pages/login_page.dart';
 import 'package:young_college/features/user_auth/presentation/pages/sign_up_page.dart';
-import 'package:firebase_app_check/firebase_app_check.dart';
 import 'firebase_options.dart';
 
 void main() async {

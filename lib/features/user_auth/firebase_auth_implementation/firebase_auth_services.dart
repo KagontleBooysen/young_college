@@ -1,15 +1,12 @@
 
 
-
-
 import 'package:firebase_auth/firebase_auth.dart';
-
+import 'package:google_sign_in/google_sign_in.dart';
 import '../../../global/common/toast.dart';
 
-import 'package:google_sign_in/google_sign_in.dart';
-
 class FirebaseAuthService {
-  FirebaseAuth _auth = FirebaseAuth.instance;
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn();
 
   Future<User?> signUpWithEmailAndPassword(String email, String password) async {
     try {
@@ -22,8 +19,8 @@ class FirebaseAuthService {
         showToast(message: 'An error occurred during sign-up. Please try again.');
         print('Full exception: $e');
       }
+      return null;
     }
-    return null;
   }
 
   Future<User?> signInWithEmailAndPassword(String email, String password) async {
@@ -37,30 +34,45 @@ class FirebaseAuthService {
         showToast(message: 'An error occurred during sign-in. Please try again.');
         print('Full exception: $e');
       }
+      return null;
     }
-    return null;
   }
 
   Future<User?> signInWithGoogle() async {
     try {
-      final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAccount? googleSignInAccount = await _googleSignIn.signIn();
 
-      if (googleAuth != null) {
-        final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
-          idToken: googleAuth.idToken,
+      if (googleSignInAccount != null) {
+        final GoogleSignInAuthentication googleSignInAuthentication =
+            await googleSignInAccount.authentication;
+
+        final AuthCredential credential = GoogleAuthProvider.credential(
+          idToken: googleSignInAuthentication.idToken,
+          accessToken: googleSignInAuthentication.accessToken,
         );
 
-        UserCredential userCredential = await _auth.signInWithCredential(credential);
-        return userCredential.user;
+        final UserCredential authResult = await _auth.signInWithCredential(credential);
+        final User? user = authResult.user;
+
+        return user;
       } else {
-        showToast(message: 'Google Sign-In failed. Please try again.');
+        // Handle case where the user canceled the Google sign-in
+        print("Google sign-in canceled");
+        // You might want to show a message to the user
+        return null;
       }
     } catch (e) {
-      showToast(message: 'An error occurred during Google Sign-In. Please try again.');
-      print('Google Sign-In error: $e');
+      // Handle Google sign-in error
+      print("Google sign-in error: $e");
+      // You might want to show an error message to the user
+      return null;
     }
-    return null;
+  }
+
+  Future<void> signOut() async {
+    await _auth.signOut();
+    await _googleSignIn.signOut();
   }
 }
+
+
