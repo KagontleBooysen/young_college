@@ -12,7 +12,12 @@
           "package_name": "com.example.ycapable_mob"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "937400269246-4l9f3q1eipbfuh5peojvtvckhd12j9fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB6kMXdGGm9mPQw42HtaG7hxvHZzAWMD_4"
@@ -20,7 +25,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937400269246-4l9f3q1eipbfuh5peojvtvckhd12j9fa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "937400269246-p6ultv76jeod04oav4260egh1kpmqdel.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ycapableMob.RunnerTests"
+              }
+            }
+          ]
         }
       }
     },
@@ -31,7 +48,20 @@
           "package_name": "com.example.young_college"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "937400269246-jgn4h9bighuvhg58lo1ljrjd4hu9q3a1.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.young_college",
+            "certificate_hash": "cee40ea178dd07598fc4fc7fb073edf167bd3da2"
+          }
+        },
+        {
+          "client_id": "937400269246-4l9f3q1eipbfuh5peojvtvckhd12j9fa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyB6kMXdGGm9mPQw42HtaG7hxvHZzAWMD_4"
@@ -39,7 +69,19 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "937400269246-4l9f3q1eipbfuh5peojvtvckhd12j9fa.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "937400269246-p6ultv76jeod04oav4260egh1kpmqdel.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.ycapableMob.RunnerTests"
+              }
+            }
+          ]
         }
       }
     }

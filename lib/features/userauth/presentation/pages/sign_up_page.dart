@@ -1,8 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:young_college/features/user_auth/firebase_auth_implementation/firebase_auth_services.dart';
-import 'package:young_college/features/user_auth/presentation/pages/login_page.dart';
-import 'package:young_college/features/user_auth/presentation/widgets/form_container_widget.dart';
+import 'package:young_college/features/userauth/firebase_auth_implementation/firebase_auth_services.dart';
+import 'package:young_college/features/userauth/presentation/pages/login_page.dart';
+import 'package:young_college/features/userauth/presentation/widgets/form_container_widget.dart';
 import 'package:young_college/global/common/toast.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -34,7 +34,7 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text("SignUp"),
+        title: Text(""),
       ),
       body: Center(
         child: Padding(

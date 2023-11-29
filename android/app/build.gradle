@@ -5,7 +5,6 @@ plugins {
     id 'com.google.gms.google-services' 
 }
 
-
 def localProperties = new Properties()
 def localPropertiesFile = rootProject.file('local.properties')
 if (localPropertiesFile.exists()) {
@@ -28,7 +27,7 @@ if (flutterVersionName == null) {
 
 android {
     namespace "com.example.young_college"
-    compileSdkVersion 34
+    compileSdkVersion flutter.compileSdkVersion 
     ndkVersion flutter.ndkVersion
 
     compileOptions {
@@ -70,10 +69,6 @@ flutter {
 
 dependencies {
 implementation platform('com.google.firebase:firebase-bom:32.5.0')
- 
-
-
-
 }
 
 

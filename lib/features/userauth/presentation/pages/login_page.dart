@@ -1,7 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:young_college/features/user_auth/presentation/pages/sign_up_page.dart';
-import 'package:young_college/features/user_auth/presentation/widgets/form_container_widget.dart';
+import 'package:young_college/features/userauth/presentation/pages/sign_up_page.dart';
+import 'package:young_college/features/userauth/presentation/widgets/form_container_widget.dart';
 import 'package:young_college/global/common/toast.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -33,10 +33,6 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text("Login"),
-      ),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 15),
@@ -45,7 +41,9 @@ class _LoginPageState extends State<LoginPage> {
             children: [
               Text(
                 "Login",
+                key: Key("login1"),
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
+                
               ),
               SizedBox(
                 height: 30,
@@ -83,7 +81,7 @@ class _LoginPageState extends State<LoginPage> {
                             color: Colors.white,
                           )
                         : Text(
-                            "Login",
+                            "Button",
                             style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
