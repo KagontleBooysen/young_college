@@ -184,5 +184,50 @@ test('Format checking the text Delete', () {
     final result = formatTextMessage('Delete');
     expect(result, 'Formatted: Delete');
   });
+
+  // unit_testing for activity_request2_test.dart
+
+test('Format checking the text title requestactivity2', () {
+    final result = formatTextMessage('RequestActivity2');
+    expect(result, 'Formatted: RequestActivity2');
+  });
+
+test('Format checking the text class name', () {
+    final result = formatTextMessage('Class Name');
+    expect(result, 'Formatted: Class Name');
+  });
+
+test('Format checking the text requested created date ', () {
+    final result = formatTextMessage('Requested Created Date');
+    expect(result, 'Formatted: Requested Created Date');
+  });
+
+test('Format checking the text requested time', () {
+    final result = formatTextMessage('Requested Time');
+    expect(result, 'Formatted: Requested Time');
+  });
+
+test('Format checking the text requested class date ', () {
+    final result = formatTextMessage('Requested Class Date');
+    expect(result, 'Formatted: Requested Class Date');
+  });
+
+
+test('Format checking the text add a video meeting link ', () {
+    final result = formatTextMessage('Please Add a Video Meeting Link');
+    expect(result, 'Formatted: Please Add a Video Meeting Link');
+  });
+
+test('Format checking the text link', () {
+    final result = formatTextMessage('Link');
+    expect(result, 'Formatted: Link');
+  });
+
+
+test('Format checking the text button book ', () {
+    final result = formatTextMessage('Book');
+    expect(result, 'Formatted: Book');
+  });
+
 }
 
