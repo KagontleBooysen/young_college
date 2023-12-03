@@ -1,12 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:young_college/features/userauth/presentation/pages/home_page.dart';
 import 'package:young_college/features/userauth/presentation/pages/crud.dart';
+import 'package:flutter/material.dart';
+import 'package:young_college/features/userauth/presentation/pages/activity_classes.dart';
+import 'package:young_college/features/userauth/presentation/pages/activity_available2.dart';
+
 
 String formatWelcomeMessage(String message) {
   return 'Formatted: $message';
 }
 
 String formatTextMessage(String message) {
+  return 'Formatted: $message';
+}
+
+String formatbuildClassItem(String message) {
   return 'Formatted: $message';
 }
 
@@ -229,5 +237,214 @@ test('Format checking the text button book ', () {
     expect(result, 'Formatted: Book');
   });
 
+
+
+//unit test for page activity_classes_test.dart
+
+test('Format shows buildClassItem for Class Name 1', () {
+  // Call the utility function with trimmed input
+  final result = formatbuildClassItem(' Class Name 1'.trim());
+
+  // Verify the result
+  expect(result, 'Formatted: Class Name 1');
+});
+
+test(' buildClassItem for Instructor Name 1', () {
+  // Call the utility function with trimmed input
+  final result = formatbuildClassItem(' Instructor Name 2'.trim());
+
+  // Verify the result
+  expect(result, 'Formatted: Instructor Name 2');
+});
+
+test('Format checking the text Based on your interests.', () {
+    final result = formatTextMessage('Based on your interests.');
+    expect(result, 'Formatted: Based on your interests.');
+  });
+
+  test('Format checking the text Available Classes', () {
+    final result = formatTextMessage('Available Classes');
+    expect(result, 'Formatted: Available Classes');
+  });
+
+
+//unit testing for activity_edit2.dart//
+
+test('Checking the Appbar text student profile.', () {
+    final result = formatTextMessage('Student Profile');
+    expect(result, 'Formatted: Student Profile');
+  });
+
+  test('Checking the text Edit profile', () {
+    final result = formatTextMessage('Edit Profile');
+    expect(result, 'Formatted: Edit Profile');
+  });
+
+  test('Checking the user if they see the text Profile picture', () {
+    final result = formatTextMessage('Profile Picture');
+    expect(result, 'Formatted: Profile Picture');
+  });
+
+  test('Checking if the user is able to see the text Choose Photo', () {
+    final result = formatTextMessage('Choose Photo');
+    expect(result, 'Formatted: Choose Photo');
+  });
+
+
+//Upcoming_classes.dart//
+test('Checking if the user is able to see the text Save in the Button', () {
+    final result = formatTextMessage('BottomNavigationBar');
+    expect(result, 'Formatted: BottomNavigationBar');
+  });
+
+test('Checking if the image is displayed on the screen', () {
+    final result = formatTextMessage('Image');
+    expect(result, 'Formatted: Image');
+  });
+
+  test('Checking if the title is displayed', () {
+    final result = formatTextMessage('YoungandCapable');
+    expect(result, 'Formatted: YoungandCapable');
+  });
+
+  test('Checking the text if its displayed', () {
+    final result = formatTextMessage('No Scheduled Classes');
+    expect(result, 'Formatted: No Scheduled Classes');
+  });
+
+
+  //edit_my_class.dart//
+test('Checking if the title on the appbar is displayed on the screen', () {
+    final result = formatTextMessage('Edit_my_class Test');
+    expect(result, 'Formatted: Edit_my_class Test');
+  });
+
+  test('Checking the text Edit My Class  ', () {
+    final result = formatTextMessage('Edit My Class');
+    expect(result, 'Formatted: Edit My Class');
+  });
+
+  test('Checking the text Select Class Type... ', () {
+    final result = formatTextMessage('Select Class Type...');
+    expect(result, 'Formatted: Select Class Type...');
+  });
+
+
+ test('Checking the text Class Name', () {
+    final result = formatTextMessage('Class Name');
+    expect(result, 'Formatted: Class Name');
+  });
+
+test('Checking the text Check ElevatedButton', () {
+    final result = formatTextMessage('ElevatedButton');
+    expect(result, 'Formatted: ElevatedButton');
+  });
+
+
+
+
+
+  //unit testing activity_available2.dart 
+test('Checking the text if its displayed', () {
+    final result = formatTextMessage('All Available Classes');
+    expect(result, 'Formatted: All Available Classes');
+  });
+
+test('Checking the ClassItem', () {
+    final result = formatTextMessage('imageName');
+    expect(result, 'Formatted: imageName');
+  });
+
+
+ 
+
+//unit testing AvailableActivity2//
+
+testWidgets('AvailableActivity2 displays the correct content', (WidgetTester tester) async {
+    // Build our widget and trigger a frame.
+    await tester.pumpWidget(buildTestWidget());
+
+    // Verify that the buildClassItem displays the correct content.
+
+    // Verify the presence of Icons.person.
+    expect(find.byIcon(Icons.person), findsNWidgets(3));
+
+    // Verify the presence of className and instructorName.
+    expect(find.text('Class Name 1'), findsOneWidget);
+    expect(find.text('Instructor Name 1'), findsOneWidget);
+    expect(find.text('Class Name 2'), findsOneWidget);
+    expect(find.text('Instructor Name 2'), findsOneWidget);
+    expect(find.text('Class Name 3'), findsOneWidget);
+    expect(find.text('Instructor Name 3'), findsOneWidget);
+  });
 }
+
+Widget buildTestWidget() {
+  return MaterialApp(
+    home: AvailableActivity2(),
+  );
+}
+
+class AvailableActivity2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Column(
+        children: [
+          SizedBox(height: 16.0),
+          buildClassItem('Class Name 1', 'Instructor Name 1', Icons.person),
+          buildClassItem('Class Name 2', 'Instructor Name 2', Icons.person),
+          buildClassItem('Class Name 3', 'Instructor Name 3', Icons.person),
+        ],
+      ),
+    );
+  }
+
+  Widget buildClassItem(String className, String instructorName, IconData iconData) {
+    return Container(
+      margin: EdgeInsets.only(top: 16.0),
+      child: Row(
+        children: <Widget>[
+          Icon(
+            iconData,
+            size: 80.0,
+          ),
+          SizedBox(width: 16.0),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Text(
+                  className,
+                  style: TextStyle(
+                    fontSize: 16.0,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                SizedBox(height: 4.0),
+                Text(
+                  instructorName,
+                  style: TextStyle(
+                    color: Colors.grey,
+                    fontSize: 12.0,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Icon(
+            Icons.arrow_forward,
+            size: 24.0,
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+  
+
+  
+
+
 

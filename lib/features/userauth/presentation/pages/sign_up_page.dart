@@ -44,6 +44,7 @@ class _SignUpPageState extends State<SignUpPage> {
             children: [
               Text(
                 "Sign Up",
+                key: Key("signup1"),
                 style: TextStyle(fontSize: 27, fontWeight: FontWeight.bold),
               ),
               SizedBox(
@@ -108,7 +109,7 @@ class _SignUpPageState extends State<SignUpPage> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => LoginPage()),
+                                builder: (context) => Login_Page()),
                             (route) => false);
                       },
                       child: Text(

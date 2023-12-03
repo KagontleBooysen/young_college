@@ -9,14 +9,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import '../../firebase_auth_implementation/firebase_auth_services.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class Login_Page extends StatefulWidget {
+  const Login_Page({Key? key}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<Login_Page> createState() => _LoginPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _LoginPageState extends State<Login_Page> {
   bool _isSigning = false;
   final FirebaseAuthService _auth = FirebaseAuthService();
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
