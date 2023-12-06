@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(now());
 }
 
-class MyApp extends StatelessWidget {
+class now extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -66,6 +66,7 @@ class ClassEditForm extends StatelessWidget {
             Center(
               child: ElevatedButton(
                 onPressed: () {
+                 Navigator.pushNamed(context, '/upvision');  
                   // Handle update class action
                 },
                 child: Text("Update Class"),

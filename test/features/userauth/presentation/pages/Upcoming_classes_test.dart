@@ -6,7 +6,7 @@ import 'package:young_college/features/userauth/presentation/pages/Upcoming_clas
 void main() {
   testWidgets('MyApp has a logo and bottom navigation bar', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(MaterialApp(home: MyApp()));
+    await tester.pumpWidget(MaterialApp(home: vision()));
 
     // Verify that the logo is displayed.
     expect(find.byType(Image), findsOneWidget);

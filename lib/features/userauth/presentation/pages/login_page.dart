@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:young_college/features/userauth/presentation/pages/crud.dart';
+import 'package:young_college/features/userauth/presentation/pages/activity_request2.dart';
 import 'package:young_college/features/userauth/presentation/pages/sign_up_page.dart';
 import 'package:young_college/features/userauth/presentation/widgets/form_container_widget.dart';
 import 'package:young_college/global/common/toast.dart';
@@ -170,12 +172,15 @@ class _LoginPageState extends State<Login_Page> {
     });
 
     if (user != null) {
-      showToast(message: "User is successfully signed in");
-      Navigator.pushNamed(context, "/home");
-    } else {
-      showToast(message: "Some error occurred");
-    }
+    showToast(message: "User is successfully signed in");
+    Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => RequestActivity2()), 
+    );
+  } else {
+    showToast(message: "Some error occurred");
   }
+}
 
 
 final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
@@ -200,7 +205,7 @@ Future<User?> signInWithGoogle(BuildContext context) async {
 
       if (user != null) {
         // Navigate to the home screen on successful authentication
-        Navigator.pushReplacementNamed(context, "/home");
+        Navigator.pushReplacementNamed(context, "/request");
       }
 
       return user;

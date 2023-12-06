@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LinkActivity2 extends StatelessWidget {
+class activityapp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -35,7 +35,7 @@ class LinkActivity2 extends StatelessWidget {
             SizedBox(height: 32.0),
             ElevatedButton(
               onPressed: () {
-                // Add your book logic here
+                Navigator.pushNamed(context, '/selectnow'); 
               },
               style: ElevatedButton.styleFrom(
                 primary: Colors.white,
@@ -53,6 +53,6 @@ class LinkActivity2 extends StatelessWidget {
 
 void main() {
   runApp(MaterialApp(
-    home: LinkActivity2(),
+    home: activityapp(),
   ));
 }

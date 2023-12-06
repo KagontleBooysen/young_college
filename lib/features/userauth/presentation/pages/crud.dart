@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:young_college/features/userauth/presentation/pages/crud.dart';
+import 'package:young_college/features/userauth/presentation/pages/home_page.dart';
 import 'firebase_options.dart';
 
 void main() async {
@@ -47,7 +49,8 @@ class _MyAppState extends State<MyApp> {
   }
 
   Future<void> createData() async {
-    DocumentReference documentReference = FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
 
     // Create a map for the student data
     Map<String, dynamic> students = {
@@ -63,56 +66,57 @@ class _MyAppState extends State<MyApp> {
   }
 
   readData() {
-  DocumentReference documentReference =
-      FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
 
-  documentReference.get().then((datasnapshot) {
-    if (datasnapshot.exists) {
-      Map<String, dynamic>? data = datasnapshot.data() as Map<String, dynamic>?;
-      if (data != null) {
-        print("Student Data:");
-        print("Name: ${data["studentName"]}");
-        print("Student ID: ${data["studentID"]}");
-        print("Study Program ID: ${data["studyProgramID"]}");
-        print("GPA: ${data["studentGPA"]}");
+    documentReference.get().then((datasnapshot) {
+      if (datasnapshot.exists) {
+        Map<String, dynamic>? data =
+            datasnapshot.data() as Map<String, dynamic>?;
+        if (data != null) {
+          print("Student Data:");
+          print("Name: ${data["studentName"]}");
+          print("Student ID: ${data["studentID"]}");
+          print("Study Program ID: ${data["studyProgramID"]}");
+          print("GPA: ${data["studentGPA"]}");
+        } else {
+          print("Data is null.");
+        }
       } else {
-        print("Data is null.");
+        print("$studentName does not exist.");
       }
-    } else {
-      print("$studentName does not exist.");
+    });
+  }
+
+  Future<void> updateData() async {
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
+
+    Map<String, dynamic> updatedData = {
+      "studentID": studentID,
+      "studyProgramID": studyProgramID,
+      "studentGPA": studentGPA,
+    };
+
+    try {
+      await documentReference.update(updatedData);
+      print("$studentName updated");
+    } catch (error) {
+      print("Error updating data: $error");
     }
-  });
-}
-
-Future<void> updateData() async {
-  DocumentReference documentReference = FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
-
-  Map<String, dynamic> updatedData = {
-    "studentID": studentID,
-    "studyProgramID": studyProgramID,
-    "studentGPA": studentGPA,
-  };
-
-  try {
-    await documentReference.update(updatedData);
-    print("$studentName updated");
-  } catch (error) {
-    print("Error updating data: $error");
   }
-}
 
+  Future<void> deleteData() async {
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
 
-Future<void> deleteData() async {
-  DocumentReference documentReference = FirebaseFirestore.instance.collection("MyStudents").doc(studentName);
-
-  try {
-    await documentReference.delete();
-    print("$studentName deleted");
-  } catch (error) {
-    print("Error deleting data: $error");
+    try {
+      await documentReference.delete();
+      print("$studentName deleted");
+    } catch (error) {
+      print("Error deleting data: $error");
+    }
   }
-}
-
 
   @override
   Widget build(BuildContext context) {
@@ -202,8 +206,9 @@ Future<void> deleteData() async {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      createData();
+                    onPressed: () async {
+                      await createData();
+                      navigateToRequestPage();
                     },
                     child: Text("Create"),
                   ),
@@ -216,8 +221,9 @@ Future<void> deleteData() async {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      readData();
+                    onPressed: () async {
+                      await readData();
+                      navigateToRequestPage();
                     },
                     child: Text("Read"),
                   ),
@@ -230,8 +236,9 @@ Future<void> deleteData() async {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      updateData();
+                    onPressed: () async {
+                      await updateData();
+                      navigateToRequestPage();
                     },
                     child: Text("Update"),
                   ),
@@ -244,8 +251,9 @@ Future<void> deleteData() async {
                         ),
                       ),
                     ),
-                    onPressed: () {
-                      deleteData();
+                    onPressed: () async {
+                      await deleteData();
+                      navigateToRequestPage();
                     },
                     child: Text("Delete"),
                   ),
@@ -255,6 +263,14 @@ Future<void> deleteData() async {
           ),
         ),
       ),
+    );
+  }
+
+  // Function to navigate to the "request" page
+  Future<void> navigateToRequestPage() async {
+    await Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => HomePage()),
     );
   }
 }

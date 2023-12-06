@@ -93,6 +93,7 @@ class EditActivity2 extends StatelessWidget {
                 SizedBox(height: 50.0),
                 ElevatedButton(
                   onPressed: () {
+                    Navigator.pushNamed(context, '/link');
                     // Add your save logic here
                   },
                   style: ElevatedButton.styleFrom(

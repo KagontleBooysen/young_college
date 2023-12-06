@@ -56,7 +56,7 @@ class AvailableActivity2 extends StatelessWidget {
                 width: 400,
                 child:ElevatedButton(
               onPressed: () {
-                // Handle the button press
+  
               },
               child: Text("SEE ALL CLASSES"),
             ),
@@ -105,6 +105,7 @@ class AvailableActivity2 extends StatelessWidget {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
+           Navigator.pushNamed(context, '/class');
           // Handle the floating action button press
         },
         child: Icon(Icons.add),

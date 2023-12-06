@@ -6,7 +6,7 @@ void main() {
   testWidgets('Edit_my_class Test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
-      home: MyApp(),
+      home: now(),
     ));
 
     // Verify the initial UI state of the ClassEditForm widget.
@@ -20,7 +20,7 @@ void main() {
   testWidgets('Check ElevatedButton', (WidgetTester tester) async {
     // Build our app and trigger a frame.
     await tester.pumpWidget(MaterialApp(
-      home: MyApp(),
+      home: now(),
     ));
 
     // Verify the presence of ElevatedButton

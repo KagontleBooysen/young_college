@@ -5,14 +5,14 @@ import 'package:young_college/features/userauth/presentation/pages/activity_clas
 
 void main() {
   testWidgets('checking the text of our title...', (WidgetTester tester) async {
-  await tester.pumpWidget(MaterialApp(home: AvailableActivity2()));
+  await tester.pumpWidget(MaterialApp(home: AvailableActivity1()));
   await tester.pump();
 
   expect(find.text("All Available Classes"), findsOneWidget); 
   });
 
   testWidgets('checking the text of our widget...', (WidgetTester tester) async {
-  await tester.pumpWidget(MaterialApp(home: AvailableActivity2()));
+  await tester.pumpWidget(MaterialApp(home: AvailableActivity1()));
   await tester.pump();
 
   expect(find.text("Available Classes"), findsOneWidget); 

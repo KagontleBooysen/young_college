@@ -11,8 +11,8 @@ class LinkActivity2 extends StatelessWidget {
           children: <Widget>[
             Image.asset(
               'images/new.png', 
-              width: 400.0,
-              height: 400.0,
+              width: 50.0,
+              height: 50.0,
             ),
             SizedBox(height: 16.0),
             Text(
@@ -37,6 +37,7 @@ class LinkActivity2 extends StatelessWidget {
               width: 200.0, // Increase button width
               child: ElevatedButton(
                 onPressed: () {
+                  Navigator.pushNamed(context, '/available');
                   // Add your action here
                 },
                 style: ElevatedButton.styleFrom(

@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(vision());
 }
 
-class MyApp extends StatelessWidget {
+class vision extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,7 +34,7 @@ class MyHomePage extends StatelessWidget {
               width: 250, // adjust the width as needed
               height: 250, // adjust the height as needed
             ),
-            
+
             SizedBox(height: 20),
 
             // Text: 'No Scheduled Classes'
@@ -50,6 +50,19 @@ class MyHomePage extends StatelessWidget {
               'You haven\'t requested to take a class yet... find a class and schedule a time to take it!',
               textAlign: TextAlign.center,
               style: TextStyle(fontSize: 16, color: Colors.grey),
+            ),
+
+            SizedBox(height: 20),
+            
+
+             Container(
+              width: 200, // Set the width as needed
+              child: ElevatedButton(
+                onPressed: () {
+
+                },
+                child: Text('Find a Class'),
+              ),
             ),
           ],
         ),
@@ -74,6 +87,9 @@ class MyHomePage extends StatelessWidget {
             label: 'Profile',
           ),
         ],
+        onTap: (index) {
+  
+        }, // Navigate to '/act' under 'Learn' tab
       ),
     );
   }

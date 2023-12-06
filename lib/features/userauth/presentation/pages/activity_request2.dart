@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:young_college/main.dart';
 
 class RequestActivity2 extends StatelessWidget {
   @override
@@ -83,7 +84,7 @@ class RequestActivity2 extends StatelessWidget {
                   // Video Meeting Link Input
                   TextFormField(
                     decoration: InputDecoration(
-                      hintText: 'Enterlink...',
+                      hintText: 'Enter link...',
                     ),
                   ),
                   SizedBox(height: 30.0),
@@ -93,7 +94,7 @@ class RequestActivity2 extends StatelessWidget {
                       width: 200.0, // Increase the button width as needed
                       child: ElevatedButton(
                         onPressed: () {
-                          // Add your book button logic here
+                          Navigator.pushNamed(context, '/edit');
                         },
                         child: Text(
                           'Book',
